@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env/
+
+# Django
+*.log
+*.pot
+local_settings.py
+db.sqlite3
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Static & Media
+/static/
+/media/
+
+# Migrations cache
+*/migrations/__pycache__/
