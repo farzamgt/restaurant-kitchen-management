@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-key')
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = 'True'
 
 ALLOWED_HOSTS = []
 
