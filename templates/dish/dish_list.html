@@ -30,7 +30,7 @@
             {% for dish in object_list %}
                 <tr>
                     <td>{{ dish.name }}</td>
-                    <td>{{ dish.dishtype.name }}</td>
+                    <td>{{ dish.dish_type.name }}</td>
                     <td>
                         {% for cook in dish.cooks.all %}
                             {{ cook }}{% if not forloop.last %}, {% endif %}

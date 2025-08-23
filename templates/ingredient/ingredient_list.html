@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Ingredients</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="mb-3">
+        <a href="{% url 'ingredient:ingredient_create' %}" class="btn btn-success">Add Ingredient</a>
+    </div>
+
+    <div class="row">
+        {% for ingredient in object_list %}
+        <div class="col-md-4 mb-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ingredient.name }}</h5>
+                    <a href="{% url 'ingredient:ingredient_update' ingredient.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'ingredient:ingredient_delete' ingredient.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No ingredients found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
