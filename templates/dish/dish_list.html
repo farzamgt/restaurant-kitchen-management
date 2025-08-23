@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Dishes</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'dish:dish_create' %}" class="btn btn-primary mb-3">Add Dish</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Dish Type</th>
+                <th>Cooks</th>
+                <th>Ingredients</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dish in object_list %}
+                <tr>
+                    <td>{{ dish.name }}</td>
+                    <td>{{ dish.dishtype.name }}</td>
+                    <td>
+                        {% for cook in dish.cooks.all %}
+                            {{ cook }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for ingredient in dish.ingredients.all %}
+                            {{ ingredient }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if dish.photo %}
+                            <img src="{{ dish.photo.url }}" alt="{{ dish.name }}" width="50">
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'dish:dish_update' dish.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'dish:dish_delete' dish.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No dishes found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
