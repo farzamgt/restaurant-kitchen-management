@@ -1,14 +1,14 @@
 from django.urls import path
 from .views import (
-    DishListView,
-    DishCreateView,
-    DishUpdateView,
-    DishDeleteView,
     DishTypeListView,
     DishTypeCreateView,
     DishTypeUpdateView,
     DishTypeDeleteView,
-    DishDetailView
+    DishListView,
+    DishCreateView,
+    DishUpdateView,
+    DishDeleteView,
+    DishDetailView,
 )
 
 app_name = "dish"

@@ -6,6 +6,6 @@ from .models import Dish
 @receiver(post_save, sender=Dish)
 def dish_saved_message(sender, instance, created, **kwargs):
     if created:
-        messages.success(instance._request, f"Dish '{instance.name}' was created successfully!")
+        print(f"Dish '{instance.name}' was created successfully!")
     else:
-        messages.success(instance._request, f"Dish '{instance.name}' was updated successfully!")
+        print(f"Dish '{instance.name}' was updated successfully!")

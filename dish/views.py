@@ -1,8 +1,9 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
+from django.contrib import messages
+from django.db.models import Q
 from .models import DishType, Dish
 from .forms import DishForm
-from django.db.models import Q
 
 
 class DishTypeListView(ListView):
@@ -17,17 +18,30 @@ class DishTypeListView(ListView):
             qs = qs.filter(name__icontains=query)
         return qs
 
+
 class DishTypeCreateView(CreateView):
     model = DishType
     fields = ["name"]
     template_name = "dish/dishtype_form.html"
     success_url = reverse_lazy("dish:dishtype_list")
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f"Dish type '{form.instance.name}' was created successfully!")
+        return response
+
+
 class DishTypeUpdateView(UpdateView):
     model = DishType
     fields = ["name"]
     template_name = "dish/dishtype_form.html"
     success_url = reverse_lazy("dish:dishtype_list")
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f"Dish type'{form.instance.name}' was updated successfully!")
+        return response
+
 
 class DishTypeDeleteView(DeleteView):
     model = DishType
@@ -50,6 +64,7 @@ class DishListView(ListView):
             ).distinct()
         return qs
 
+
 class DishCreateView(CreateView):
     model = Dish
     form_class = DishForm
@@ -57,8 +72,10 @@ class DishCreateView(CreateView):
     success_url = reverse_lazy("dish:dish_list")
 
     def form_valid(self, form):
-        form.instance._request = self.request
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        messages.success(self.request, f"Dish '{form.instance.name}' was created successfully!")
+        return response
+
 
 class DishUpdateView(UpdateView):
     model = Dish
@@ -67,8 +84,10 @@ class DishUpdateView(UpdateView):
     success_url = reverse_lazy("dish:dish_list")
 
     def form_valid(self, form):
-        form.instance._request = self.request
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        messages.success(self.request, f"Dish '{form.instance.name}' was updated successfully!")
+        return response
+
 
 class DishDeleteView(DeleteView):
     model = Dish
