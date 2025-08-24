@@ -11,9 +11,13 @@
             <ul class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cook:profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{% url 'cook:logout' %}" method="post" style="display:inline;">
                             {% csrf_token %}
-                            <button type="submit" class="nav-link btn btn-link" style="display:inline; padding:0; border:none; background:none;">
+                            <button type="submit" class="nav-link btn btn-link"
+                                    style="display:inline; padding:0; border:none; background:none;">
                                 Logout
                             </button>
                         </form>

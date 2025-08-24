@@ -5,7 +5,8 @@ from .views import (
     CookLogoutView,
     DashboardView,
     WelcomeView,
-    activate_cook
+    activate_cook,
+    ProfileView
 )
 
 
@@ -17,4 +18,5 @@ urlpatterns = [
     path("activate/<int:pk>/", activate_cook, name="activate"),
     path("login/", CookLoginView.as_view(), name="login"),
     path("logout/", CookLogoutView.as_view(), name="logout"),
+    path("profile/", ProfileView.as_view(), name="profile"),
 ]

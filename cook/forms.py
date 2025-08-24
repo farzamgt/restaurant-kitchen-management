@@ -17,3 +17,14 @@ class CookSignupForm(UserCreationForm):
             "password1",
             "password2"
         ]
+
+
+class CookProfileForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+            "years_of_experience"
+        ]

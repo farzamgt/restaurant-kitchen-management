@@ -1,9 +1,10 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404, render
 from .models import Cook
-from .forms import CookSignupForm
+from .forms import CookSignupForm, CookProfileForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -43,3 +44,14 @@ class WelcomeView(TemplateView):
         latest_cook = Cook.objects.latest('id')
         context['user'] = latest_cook
         return context
+
+
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = Cook
+    form_class = CookProfileForm
+    template_name = "cook/profile.html"
+    success_url = reverse_lazy("cook:profile")
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
