@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
 <div class="container mt-4">
     <h2 class="mb-4">Ingredients</h2>
-
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-
     <div class="mb-3">
         <a href="{% url 'ingredient:ingredient_create' %}" class="btn btn-success">Add Ingredient</a>
     </div>

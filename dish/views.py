@@ -35,11 +35,19 @@ class DishCreateView(CreateView):
     template_name = "dish/dish_form.html"
     success_url = reverse_lazy("dish:dish_list")
 
+    def form_valid(self, form):
+        form.instance._request = self.request
+        return super().form_valid(form)
+
 class DishUpdateView(UpdateView):
     model = Dish
     form_class = DishForm
     template_name = "dish/dish_form.html"
     success_url = reverse_lazy("dish:dish_list")
+
+    def form_valid(self, form):
+        form.instance._request = self.request
+        return super().form_valid(form)
 
 class DishDeleteView(DeleteView):
     model = Dish

@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, get_object_or_404, render
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
 from .models import Cook
 from .forms import CookSignupForm, CookProfileForm
 from django.contrib.auth.views import LoginView, LogoutView
@@ -19,6 +19,11 @@ class CookSignupView(CreateView):
     template_name = "accounts/signup.html"
     success_url = reverse_lazy("cook:welcome")
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Account created successfully! Please activate it.")
+        return response
+
 
 class CookLoginView(LoginView):
     template_name = "accounts/login.html"
@@ -33,6 +38,7 @@ def activate_cook(request, pk):
     cook = get_object_or_404(Cook, pk=pk)
     cook.is_active = True
     cook.save(update_fields=['is_active'])
+    messages.success(request, "Your account has been activated! You can now log in.")
     return redirect('cook:login')
 
 
@@ -54,6 +60,11 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "All changes saved successfully!")
+        return response
 
 
 class CookListView(LoginRequiredMixin, ListView):
