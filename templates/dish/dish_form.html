@@ -2,9 +2,8 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
 <div class="container mt-4 mb-5">
-    <h2>{{ view.object.pk|yesno:"Update Dish,Add Dish" }}</h2>
+    <h2>{% if view.object %}Update Dish{% else %}Add Dish{% endif %}</h2>
 
     {% if messages %}
         {% for message in messages %}
@@ -18,6 +17,13 @@
     <form method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
         {{ form|crispy }}
+        {% if view.object.photo %}
+            <div class="mb-3">
+                <label class="form-label">Current Photo:</label><br>
+                <img src="{{ view.object.photo.url }}" alt="{{ view.object.name }}"
+                     class="img-thumbnail" style="width:100px; height:100px; object-fit:cover;">
+            </div>
+        {% endif %}
         <button type="submit" class="btn btn-success mt-2">Save</button>
         <a href="{% url 'dish:dish_list' %}" class="btn btn-secondary mt-2">Cancel</a>
     </form>

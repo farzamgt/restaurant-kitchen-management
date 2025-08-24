@@ -19,9 +19,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Dish Type</th>
-                <th>Cooks</th>
-                <th>Ingredients</th>
                 <th>Photo</th>
                 <th>Actions</th>
             </tr>
@@ -29,21 +26,13 @@
         <tbody>
             {% for dish in object_list %}
                 <tr>
-                    <td>{{ dish.name }}</td>
-                    <td>{{ dish.dish_type.name }}</td>
                     <td>
-                        {% for cook in dish.cooks.all %}
-                            {{ cook }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for ingredient in dish.ingredients.all %}
-                            {{ ingredient }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
+                        <a href="{% url 'dish:dish_detail' dish.pk %}">{{ dish.name }}</a>
                     </td>
                     <td>
                         {% if dish.photo %}
-                            <img src="{{ dish.photo.url }}" alt="{{ dish.name }}" width="50">
+                            <img src="{{ dish.photo.url }}" alt="{{ dish.name }}"
+                                 class="img-thumbnail" style="width:50px; height:50px; object-fit:cover;">
                         {% else %}
                             -
                         {% endif %}
@@ -55,7 +44,7 @@
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="6">No dishes found.</td>
+                    <td colspan="3">No dishes found.</td>
                 </tr>
             {% endfor %}
         </tbody>

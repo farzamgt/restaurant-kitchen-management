@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Cooks{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">All Cooks</h2>
+    <div class="row">
+        {% for cook in cooks %}
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm text-center">
+                {% if cook.avatar %}
+                <img src="{{ cook.avatar.url }}" class="card-img-top rounded-circle mx-auto mt-3"
+                     style="width:120px; height:120px; object-fit:cover;"
+                     alt="{{ cook.username }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ cook.username }}</h5>
+                    <p class="card-text">{{ cook.first_name }} {{ cook.last_name }}</p>
+                    <p class="card-text">Experience: {{ cook.years_of_experience }} years</p>
+                    <p class="card-text">Email: {{ cook.email }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

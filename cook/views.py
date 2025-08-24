@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, UpdateView
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404, render
@@ -50,8 +50,13 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     model = Cook
     form_class = CookProfileForm
     template_name = "cook/profile.html"
-    success_url = reverse_lazy("cook:profile")
+    success_url = reverse_lazy("cook:cook_list")
 
     def get_object(self, queryset=None):
         return self.request.user
 
+
+class CookListView(LoginRequiredMixin, ListView):
+    model = Cook
+    template_name = "cook/cook_list.html"
+    context_object_name = "cooks"

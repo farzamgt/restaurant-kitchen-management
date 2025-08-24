@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from .models import DishType, Dish
 from .forms import DishForm
@@ -45,3 +45,9 @@ class DishDeleteView(DeleteView):
     model = Dish
     template_name = "dish/dish_confirm_delete.html"
     success_url = reverse_lazy("dish:dish_list")
+
+
+class DishDetailView(DetailView):
+    model = Dish
+    template_name = "dish/dish_detail.html"
+    context_object_name = "dish"

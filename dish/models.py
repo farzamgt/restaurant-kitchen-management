@@ -1,5 +1,7 @@
 from django.db import models
 from cook.models import Cook
+from cloudinary.models import CloudinaryField
+
 
 class DishType(models.Model):
     name = models.CharField(max_length=100)
@@ -14,7 +16,7 @@ class Dish(models.Model):
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     cooks = models.ManyToManyField(Cook)
     ingredients = models.ManyToManyField("ingredient.Ingredient", blank=True)
-    photo = models.ImageField(upload_to="dishes/", blank=True, null=True)
+    photo = CloudinaryField("photo", blank=True, null=True)
 
     def __str__(self):
         return self.name
