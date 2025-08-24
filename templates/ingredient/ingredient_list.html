@@ -8,6 +8,11 @@
         <a href="{% url 'ingredient:ingredient_create' %}" class="btn btn-success">Add Ingredient</a>
     </div>
 
+    <form method="get" class="mb-3">
+        <input type="text" name="q" placeholder="Search ingredients..." value="{{ request.GET.q }}" class="form-control">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
     <div class="row">
         {% for ingredient in object_list %}
         <div class="col-md-4 mb-3">

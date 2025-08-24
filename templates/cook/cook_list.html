@@ -5,6 +5,14 @@
 
 {% block content %}
 <div class="container mt-5">
+<div class="d-flex justify-content-between mb-3">
+    <form method="get" class="d-flex" style="width: 300px;">
+        <input type="text" name="q" class="form-control me-2" placeholder="Search cooks..."
+               value="{{ request.GET.q }}">
+        <button type="submit" class="btn btn-outline-secondary">Search</button>
+    </form>
+</div>
+
     <h2 class="mb-4 text-center">All Cooks</h2>
     <div class="row">
         {% for cook in cooks %}
@@ -20,6 +28,7 @@
                         <span style="color:white; font-size:36px;"><i class="bi bi-person"></i></span>
                     </div>
                 {% endif %}
+
                 <div class="card-body">
                     <h5 class="card-title">{{ cook.username }}</h5>
                     <p class="card-text">{{ cook.first_name }} {{ cook.last_name }}</p>

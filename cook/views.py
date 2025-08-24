@@ -71,3 +71,10 @@ class CookListView(LoginRequiredMixin, ListView):
     model = Cook
     template_name = "cook/cook_list.html"
     context_object_name = "cooks"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        q = self.request.GET.get("q")
+        if q:
+            queryset = queryset.filter(username__icontains=q)
+        return queryset

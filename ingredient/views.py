@@ -4,12 +4,20 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from .models import Ingredient
 from .forms import IngredientForm
+from django.db.models import Q
 
 
 class IngredientListView(ListView):
     model = Ingredient
     template_name = "ingredient/ingredient_list.html"
     context_object_name = "ingredients"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get("q")
+        if query:
+            qs = qs.filter(name__icontains=query)
+        return qs
 
 
 class IngredientCreateView(CreateView):
