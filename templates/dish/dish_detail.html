@@ -1,28 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{% if view.object %}Meal Information{% else %}Add Dish{% endif %}</h2>
-
+<h2>{% if view.object %}Dish Overview{% else %}Add Dish{% endif %}</h2>
 <div class="container m-5 d-flex justify-content-center">
     <div class="card shadow-sm w-75">
         <div class="row g-0">
             <!-- Left side: info + image -->
             <div class="col-md-6 p-4 d-flex flex-column justify-content-start">
                 <h3>{{ dish.name }}</h3>
+                <p><strong>Price:</strong> ${{ dish.price }}</p>
                 <p><strong>Categories:</strong>
                     {% for type in dish.dish_type.all %}
                         {{ type.name }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                <p><strong>Price:</strong> ${{ dish.price }}</p>
-                <p><strong>Cooks:</strong>
-                    {% for cook in dish.cooks.all %}
-                        {{ cook }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
                 <p><strong>Ingredients:</strong>
                     {% for ingredient in dish.ingredients.all %}
                         {{ ingredient }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <p><strong>Cooks:</strong>
+                    {% for cook in dish.cooks.all %}
+                        {{ cook }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
                 {% if dish.photo %}
