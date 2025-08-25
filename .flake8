@@ -1,0 +1,19 @@
+[flake8]
+max-line-length = 88
+exclude =
+    __pycache__
+    cook/migrations/*
+    dish/migrations/*
+    ingredient/migrations/*
+    cook/tests.py
+    dish/tests.py
+    ingredient/tests.py
+    cook/admin.py
+    dish/admin.py
+    ingredient/admin.py
+    cook/apps.py
+    dish/apps.py
+    ingredient/apps.py
+    settings.py
+    .venv
+    manage.py

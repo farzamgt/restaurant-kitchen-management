@@ -3,6 +3,7 @@ from .models import Dish, DishType
 from ingredient.models import Ingredient
 from cook.models import Cook
 
+
 class DishForm(forms.ModelForm):
     ingredients = forms.ModelMultipleChoiceField(
         queryset=Ingredient.objects.all(),
@@ -22,4 +23,12 @@ class DishForm(forms.ModelForm):
 
     class Meta:
         model = Dish
-        fields = ["name", "price", "description", "dish_type", "cooks", "ingredients", "photo"]
+        fields = [
+            "name",
+            "price",
+            "description",
+            "dish_type",
+            "cooks",
+            "ingredients",
+            "photo"
+        ]

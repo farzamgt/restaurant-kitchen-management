@@ -21,7 +21,11 @@ urlpatterns = [
     path("types/", DishTypeListView.as_view(), name="dishtype_list"),
     path("types/add/", DishTypeCreateView.as_view(), name="dishtype_create"),
     path("types/<int:pk>/edit/", DishTypeUpdateView.as_view(), name="dishtype_update"),
-    path("types/<int:pk>/delete/", DishTypeDeleteView.as_view(), name="dishtype_delete"),
+    path(
+        "types/<int:pk>/delete/",
+        DishTypeDeleteView.as_view(),
+        name="dishtype_delete"
+    ),
     path("<int:pk>/", DishDetailView.as_view(), name="dish_detail"),
 
 ]

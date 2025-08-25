@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib import messages
 from .models import Dish
+
 
 @receiver(post_save, sender=Dish)
 def dish_saved_message(sender, instance, created, **kwargs):

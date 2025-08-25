@@ -1,16 +1,15 @@
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from .models import Ingredient
 from .forms import IngredientForm
-from django.db.models import Q
 
 
 class IngredientListView(ListView):
     model = Ingredient
     template_name = "ingredient/ingredient_list.html"
     context_object_name = "ingredients"
+    paginate_by = 8
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -28,7 +27,10 @@ class IngredientCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Ingredient '{self.object.name}' created successfully!")
+        messages.success(
+            self.request,
+            f"Ingredient '{self.object.name}' created successfully!"
+        )
         return response
 
 
@@ -40,7 +42,10 @@ class IngredientUpdateView(UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Ingredient '{self.object.name}' updated successfully!")
+        messages.success(
+            self.request,
+            f"Ingredient '{self.object.name}' updated successfully!"
+        )
         return response
 
 

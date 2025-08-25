@@ -1,4 +1,10 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    DetailView
+)
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
@@ -27,7 +33,10 @@ class DishTypeCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Dish type '{form.instance.name}' was created successfully!")
+        messages.success(
+            self.request,
+            f"Dish type '{form.instance.name}' was created successfully!"
+        )
         return response
 
 
@@ -39,7 +48,10 @@ class DishTypeUpdateView(UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Dish type'{form.instance.name}' was updated successfully!")
+        messages.success(
+            self.request,
+            f"Dish type'{form.instance.name}' was updated successfully!"
+        )
         return response
 
 
@@ -73,7 +85,10 @@ class DishCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Dish '{form.instance.name}' was created successfully!")
+        messages.success(
+            self.request,
+            f"Dish '{form.instance.name}' was created successfully!"
+        )
         return response
 
 
@@ -93,7 +108,10 @@ class DishUpdateView(UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"Dish '{form.instance.name}' was updated successfully!")
+        messages.success(
+            self.request,
+            f"Dish '{form.instance.name}' was updated successfully!"
+        )
         return response
 
 

@@ -1,28 +1,28 @@
 {% if page_obj.has_other_pages %}
 <nav aria-label="Page navigation" class="mt-4">
-  <ul class="pagination justify-content-center">
+  <ul class="pagination pagination-sm justify-content-center">
     <!-- Prev button -->
     {% if page_obj.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
+        <a class="page-link border border-secondary text-dark" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+          &laquo;
         </a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <span class="page-link" aria-hidden="true">&laquo;</span>
+        <span class="page-link border border-secondary text-dark">&laquo;</span>
       </li>
     {% endif %}
 
     <!-- Page numbers -->
     {% for num in page_obj.paginator.page_range %}
       {% if page_obj.number == num %}
-        <li class="page-item active">
-          <span class="page-link">{{ num }}</span>
+        <li class="page-item active" aria-current="page">
+          <span class="page-link border border-secondary text-dark fw-bold">{{ num }}</span>
         </li>
       {% else %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          <a class="page-link border border-secondary text-dark" href="?page={{ num }}">{{ num }}</a>
         </li>
       {% endif %}
     {% endfor %}
@@ -30,13 +30,13 @@
     <!-- Next button -->
     {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
+        <a class="page-link border border-secondary text-dark" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+          &raquo;
         </a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <span class="page-link" aria-hidden="true">&raquo;</span>
+        <span class="page-link border border-secondary text-dark">&raquo;</span>
       </li>
     {% endif %}
   </ul>

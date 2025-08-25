@@ -14,6 +14,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cook',
             name='avatar',
-            field=cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, verbose_name='avatar'),
+            field=cloudinary.models.CloudinaryField(
+                blank=True,
+                max_length=255,
+                null=True,
+                verbose_name='avatar'
+            ),
         ),
     ]

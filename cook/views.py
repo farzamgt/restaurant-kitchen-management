@@ -21,7 +21,10 @@ class CookSignupView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "Account created successfully! Please activate it.")
+        messages.success(
+            self.request,
+            "Account created successfully! Please activate it."
+        )
         return response
 
 
@@ -38,7 +41,10 @@ def activate_cook(request, pk):
     cook = get_object_or_404(Cook, pk=pk)
     cook.is_active = True
     cook.save(update_fields=['is_active'])
-    messages.success(request, "Your account has been activated! You can now log in.")
+    messages.success(
+        request,
+        "Your account has been activated! You can now log in."
+    )
     return redirect('cook:login')
 
 
