@@ -77,11 +77,19 @@ class DishCreateView(CreateView):
         return response
 
 
+class DishDetailView(DetailView):
+    model = Dish
+    template_name = "dish/dish_detail.html"
+    context_object_name = "dish"
+
+
 class DishUpdateView(UpdateView):
     model = Dish
     form_class = DishForm
     template_name = "dish/dish_form.html"
-    success_url = reverse_lazy("dish:dish_list")
+
+    def get_success_url(self):
+        return reverse_lazy("dish:dish_detail", kwargs={"pk": self.object.pk})
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -93,9 +101,3 @@ class DishDeleteView(DeleteView):
     model = Dish
     template_name = "dish/dish_confirm_delete.html"
     success_url = reverse_lazy("dish:dish_list")
-
-
-class DishDetailView(DetailView):
-    model = Dish
-    template_name = "dish/dish_detail.html"
-    context_object_name = "dish"

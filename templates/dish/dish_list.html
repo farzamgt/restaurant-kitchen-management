@@ -2,24 +2,35 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Dishes</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Meals & Prices</h2>
+        <div class="d-flex">
+            <a href="{% url 'dish:dish_create' %}" class="btn btn-outline-primary btn-sm">Add New</a>
+        </div>
+    </div>
 
-    <a href="{% url 'dish:dish_create' %}" class="btn btn-primary mb-3">Add Dish</a>
 
-    <table class="table table-striped">
+    <form method="get" class="d-flex mb-3" style="width: 300px;">
+        <input type="text" name="q" value="{{ request.GET.q }}" class="form-control form-control-sm me-2"
+               placeholder="Search...">
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Search</button>
+    </form>
+
+
+    <table class="table table-striped align-middle">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Photo</th>
-                <th>Actions</th>
+                <th>Price</th>
+                <th>Thumbnail</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
             {% for dish in object_list %}
                 <tr>
-                    <td>
-                        <a href="{% url 'dish:dish_detail' dish.pk %}">{{ dish.name }}</a>
-                    </td>
+                    <td>{{ dish.name }}</td>
+                    <td>${{ dish.price }}</td>
                     <td>
                         {% if dish.photo %}
                             <img src="{{ dish.photo.url }}" alt="{{ dish.name }}"
@@ -32,13 +43,12 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'dish:dish_update' dish.pk %}" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="{% url 'dish:dish_delete' dish.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{% url 'dish:dish_detail' dish.pk %}" class="btn btn-outline-dark btn-sm">View &gt;&gt;</a>
                     </td>
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="3">No dishes found.</td>
+                    <td colspan="4">No dishes found.</td>
                 </tr>
             {% endfor %}
         </tbody>

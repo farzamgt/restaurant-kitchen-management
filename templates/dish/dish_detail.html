@@ -1,28 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>{{ dish.name }}</h2>
-    <p><strong>Type:</strong> {{ dish.dish_type.name }}</p>
-    <p><strong>Price:</strong> ${{ dish.price }}</p>
-    <p><strong>Description:</strong> {{ dish.description|linebreaks }}</p>
-    <p><strong>Cooks:</strong>
-        {% for cook in dish.cooks.all %}
-            {{ cook }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    <p><strong>Ingredients:</strong>
-        {% for ingredient in dish.ingredients.all %}
-            {{ ingredient }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    {% if dish.photo %}
-        <img src="{{ dish.photo.url }}" alt="{{ dish.name }}" class="img-fluid mt-3">
-    {% endif %}
-    <div class="mt-3">
-        <a href="{% url 'dish:dish_update' dish.pk %}" class="btn btn-warning">Edit</a>
-        <a href="{% url 'dish:dish_delete' dish.pk %}" class="btn btn-danger">Delete</a>
-        <a href="{% url 'dish:dish_list' %}" class="btn btn-secondary">Back to List</a>
+<h2>{% if view.object %}Meal Information{% else %}Add Dish{% endif %}</h2>
+
+<div class="container m-5 d-flex justify-content-center">
+    <div class="card shadow-sm w-75">
+        <div class="row g-0">
+            <!-- Left side: info + image -->
+            <div class="col-md-6 p-4 d-flex flex-column justify-content-start">
+                <h3>{{ dish.name }}</h3>
+                <p><strong>Categories:</strong>
+                    {% for type in dish.dish_type.all %}
+                        {{ type.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <p><strong>Price:</strong> ${{ dish.price }}</p>
+                <p><strong>Cooks:</strong>
+                    {% for cook in dish.cooks.all %}
+                        {{ cook }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <p><strong>Ingredients:</strong>
+                    {% for ingredient in dish.ingredients.all %}
+                        {{ ingredient }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                {% if dish.photo %}
+                    <img src="{{ dish.photo.url }}" alt="{{ dish.name }}"
+                         class="img-fluid mt-3 rounded" style="max-height: 300px; object-fit: cover;">
+                {% endif %}
+            </div>
+
+            <!-- Right side: recipe -->
+            <div class="col-md-6 p-4 border-start">
+                <h5>Recipe</h5>
+                <p>{{ dish.description|linebreaks }}</p>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-end gap-2">
+            <a href="{% url 'dish:dish_update' dish.pk %}" class="btn btn-outline-warning btn-sm">Edit</a>
+            <a href="{% url 'dish:dish_delete' dish.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+            <a href="{% url 'dish:dish_list' %}" class="btn btn-outline-secondary btn-sm">Back to List</a>
+        </div>
     </div>
 </div>
 {% endblock %}

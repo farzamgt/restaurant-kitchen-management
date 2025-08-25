@@ -1,13 +1,9 @@
 from django import forms
-from .models import Dish
+from .models import Dish, DishType
 from ingredient.models import Ingredient
 from cook.models import Cook
 
 class DishForm(forms.ModelForm):
-    class Meta:
-        model = Dish
-        fields = ["name", "description", "price", "dish_type", "cooks", "ingredients", "photo"]
-
     ingredients = forms.ModelMultipleChoiceField(
         queryset=Ingredient.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -18,3 +14,12 @@ class DishForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
+    dish_type = forms.ModelMultipleChoiceField(
+        queryset=DishType.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
+
+    class Meta:
+        model = Dish
+        fields = ["name", "price", "description", "dish_type", "cooks", "ingredients", "photo"]

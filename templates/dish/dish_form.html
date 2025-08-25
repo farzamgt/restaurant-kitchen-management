@@ -16,16 +16,83 @@
 
     <form method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
-        {{ form|crispy }}
-        {% if view.object.photo %}
-            <div class="mb-3">
-                <label class="form-label">Current Photo:</label><br>
-                <img src="{{ view.object.photo.url }}" alt="{{ view.object.name }}"
-                     class="img-thumbnail" style="width:100px; height:100px; object-fit:cover;">
+
+        <!-- Card wrapper for form fields -->
+        <div class="card shadow-sm rounded-3 mb-3">
+            <div class="card-body">
+                <!-- Name & Price -->
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.price|as_crispy_field }}
+                    </div>
+                </div>
+
+                <!-- Description -->
+                {{ form.description|as_crispy_field }}
+
+                <!-- DishType, Cooks, Ingredients -->
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Dish Types</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.dish_type %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Cooks</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.cooks %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Ingredients</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.ingredients %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Section -->
+                <div class="row">
+                    {% if view.object.photo %}
+                        <div class="col-md-6 d-flex flex-column">
+                            <label class="form-label me-2">Current Photo:</label>
+                            <img src="{{ view.object.photo.url }}" alt="{{ view.object.name }}"
+                                 class="img-thumbnail" style="width:100px; height:100px; object-fit:cover;">
+                        </div>
+                    {% endif %}
+                    <div class="col-md-6">
+                        {{ form.photo|as_crispy_field }}
+                    </div>
+                </div>
             </div>
-        {% endif %}
-        <button type="submit" class="btn btn-success mt-2">Save</button>
-        <a href="{% url 'dish:dish_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+        </div>
+
+        <!-- Buttons OUTSIDE the card -->
+        <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+            <a href="{% url 'dish:dish_list' %}" class="btn btn-outline-secondary btn-sm">Cancel</a>
+        </div>
     </form>
 </div>
 {% endblock %}
