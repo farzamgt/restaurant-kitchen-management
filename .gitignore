@@ -1,32 +1,23 @@
-# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
 *.db
 *.sqlite3
 *.egg-info/
-
-# Virtual environments
+*.pyd
 .venv/
 venv/
 ENV/
 env/
 .env/
-
-# Django
+*.env
 *.log
 *.pot
 local_settings.py
 db.sqlite3
-
-# IDE/editor
 .vscode/
 .idea/
-
-# Static & Media
 /static/
 /media/
-
-# Migrations cache
 */migrations/__pycache__/
+.DS_Store
+Thumbs.db
