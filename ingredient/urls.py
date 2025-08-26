@@ -1,9 +1,10 @@
 from django.urls import path
+
 from .views import (
-    IngredientListView,
     IngredientCreateView,
-    IngredientUpdateView,
     IngredientDeleteView,
+    IngredientListView,
+    IngredientUpdateView
 )
 
 app_name = "ingredient"

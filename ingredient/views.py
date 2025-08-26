@@ -1,8 +1,9 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
-from .models import Ingredient
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
 from .forms import IngredientForm
+from .models import Ingredient
 
 
 class IngredientListView(ListView):
