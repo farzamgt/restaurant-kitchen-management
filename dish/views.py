@@ -1,15 +1,16 @@
-from django.views.generic import (
-    ListView,
-    CreateView,
-    UpdateView,
-    DeleteView,
-    DetailView
-)
-from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
-from .models import DishType, Dish
+from django.urls import reverse_lazy
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView
+)
+
 from .forms import DishForm
+from .models import Dish, DishType
 
 
 class DishTypeListView(ListView):
@@ -67,7 +68,11 @@ class DishListView(ListView):
     context_object_name = "dishes"
 
     def get_queryset(self):
-        qs = super().get_queryset()
+        qs = super().get_queryset().prefetch_related(
+            "dish_type",
+            "cooks",
+            "ingredients"
+        )
         query = self.request.GET.get("q")
         if query:
             qs = qs.filter(
@@ -96,6 +101,13 @@ class DishDetailView(DetailView):
     model = Dish
     template_name = "dish/dish_detail.html"
     context_object_name = "dish"
+
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related(
+            "dish_type",
+            "cooks",
+            "ingredients"
+        )
 
 
 class DishUpdateView(UpdateView):

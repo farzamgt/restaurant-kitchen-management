@@ -1,7 +1,9 @@
 from django import forms
-from .models import Dish, DishType
-from ingredient.models import Ingredient
+
 from cook.models import Cook
+from ingredient.models import Ingredient
+
+from .models import Dish, DishType
 
 
 class DishForm(forms.ModelForm):
