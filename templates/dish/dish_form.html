@@ -17,10 +17,8 @@
     <form method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
 
-        <!-- Card wrapper for form fields -->
         <div class="card shadow-sm rounded-3 mb-3">
             <div class="card-body">
-                <!-- Name & Price -->
                 <div class="row">
                     <div class="col-md-6">
                         {{ form.name|as_crispy_field }}
@@ -30,10 +28,8 @@
                     </div>
                 </div>
 
-                <!-- Description -->
                 {{ form.description|as_crispy_field }}
 
-                <!-- DishType, Cooks, Ingredients -->
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label class="form-label">Categories</label>
@@ -72,7 +68,6 @@
                     </div>
                 </div>
 
-                <!-- Photo Section -->
                 <div class="row">
                     {% if view.object.photo %}
                         <div class="col-md-6 d-flex flex-column">
@@ -88,7 +83,6 @@
             </div>
         </div>
 
-        <!-- Buttons OUTSIDE the card -->
         <div class="d-flex justify-content-end gap-2">
             <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
             <a href="{% url 'dish:dish_list' %}" class="btn btn-outline-secondary btn-sm">Cancel</a>
