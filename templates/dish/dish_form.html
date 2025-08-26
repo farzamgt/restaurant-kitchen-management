@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <h2>{% if view.object %}Update Dish{% else %}Add Dish{% endif %}</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <div class="card shadow-sm rounded-3 mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.price|as_crispy_field }}
+                    </div>
+                </div>
+
+                {{ form.description|as_crispy_field }}
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Categories</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.dish_type %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Cooks</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.cooks %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Ingredients</label>
+                        <div class="border rounded p-2" style="height:120px; overflow-y:auto;">
+                            {% for checkbox in form.ingredients %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    {{ checkbox.choice_label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% if view.object.photo %}
+                        <div class="col-md-6 d-flex flex-column">
+                            <label class="form-label me-2">Current Photo:</label>
+                            <img src="{{ view.object.photo.url }}" alt="{{ view.object.name }}"
+                                 class="img-thumbnail" style="width:100px; height:100px; object-fit:cover;">
+                        </div>
+                    {% endif %}
+                    <div class="col-md-6">
+                        {{ form.photo|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+            <a href="{% url 'dish:dish_list' %}" class="btn btn-outline-secondary btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
