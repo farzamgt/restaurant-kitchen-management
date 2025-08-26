@@ -1,12 +1,19 @@
-from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, UpdateView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
-from .models import Cook
-from .forms import CookSignupForm, CookProfileForm
-from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import (
+    CreateView,
+    ListView,
+    TemplateView,
+    UpdateView
+)
+
+from .forms import CookProfileForm, CookSignupForm
+from .models import Cook
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -37,15 +44,17 @@ class CookLogoutView(LogoutView):
     next_page = reverse_lazy("cook:login")
 
 
-def activate_cook(request, pk):
-    cook = get_object_or_404(Cook, pk=pk)
-    cook.is_active = True
-    cook.save(update_fields=['is_active'])
-    messages.success(
-        request,
-        "Your account has been activated! You can now log in."
-    )
-    return redirect('cook:login')
+class ActivateCookView(View):
+    def get(self, request, pk, *args, **kwargs):
+        cook = get_object_or_404(Cook, pk=pk)
+        cook.is_active = True
+        cook.save(update_fields=['is_active'])
+        messages.success(
+            request,
+            "Your account has been activated! "
+            "You can now log in."
+        )
+        return redirect('cook:login')
 
 
 class WelcomeView(TemplateView):
