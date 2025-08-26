@@ -57,5 +57,8 @@ class IngredientDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         obj = self.get_object()
-        messages.success(request, f"Ingredient '{obj.name}' deleted successfully!")
+        messages.success(
+            request,
+            f"Ingredient '{obj.name}' deleted successfully!"
+        )
         return super().delete(request, *args, **kwargs)
