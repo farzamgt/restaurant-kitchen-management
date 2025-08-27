@@ -1,0 +1,418 @@
+[
+{
+    "model": "cook.cook",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$8ZJBrKTx8shI24ZktbXglD$q1OP/JcwWhLQ/b199aCt81P75HDergPj+h0cMEDpYek=",
+        "last_login": "2025-08-25T13:21:25.700Z",
+        "is_superuser": false,
+        "username": "cook_Marcel",
+        "first_name": "Marcel",
+        "last_name": "Dubois",
+        "email": "macel_dubois11@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T13:08:36.142Z",
+        "years_of_experience": 5,
+        "is_active": true,
+        "avatar": "image/upload/v1756127360/jwh1dnocjvh1gmjw4twz.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cook.cook",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$SBMLAGiRXVptaKpAtIdKDs$TKnR9J5jieJkcDFJHRiKXnrGnqjFeLfKbzLemdcevCU=",
+        "last_login": "2025-08-25T13:13:13.020Z",
+        "is_superuser": false,
+        "username": "head_cook_Giovanni",
+        "first_name": "Giovanni",
+        "last_name": "Russo",
+        "email": "giovanni_russo51@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T13:11:06.215Z",
+        "years_of_experience": 28,
+        "is_active": true,
+        "avatar": "image/upload/v1756127603/uosvebldmblbax3yutu5.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cook.cook",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$VwyfNQlRsBV3hoWuWS0lIG$zQoGr3243IRgmEzyW2oMQEKCM/3HCLH2i10i//iPt9s=",
+        "last_login": "2025-08-25T13:15:32.968Z",
+        "is_superuser": false,
+        "username": "cook_Anouk",
+        "first_name": "Anouk Jansen",
+        "last_name": "",
+        "email": "anouk_jansen@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T13:15:13.376Z",
+        "years_of_experience": 1,
+        "is_active": true,
+        "avatar": "image/upload/v1756127744/y9vu7b4fnxm2bmkw6mwl.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cook.cook",
+    "pk": 21,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$bRmH6WQqOS3YZHQYLQdKu8$dZi44SKT/Ku8cs43GQ944P6NHiuYKwHV0fRYBvrYpMk=",
+        "last_login": "2025-08-25T13:18:04.453Z",
+        "is_superuser": false,
+        "username": "cook_Diego",
+        "first_name": "Diego",
+        "last_name": "Herrera",
+        "email": "diego_herrera@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T13:17:45.895Z",
+        "years_of_experience": 10,
+        "is_active": true,
+        "avatar": "image/upload/v1756127901/rtl3oytlm2x1feco37wo.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cook.cook",
+    "pk": 22,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Ohdm6bWsAvPmB7HvbLu7UJ$wvPESu4tDjPuJuQINSD8zQGCHSDCxjUYrJoICnrCTek=",
+        "last_login": "2025-08-25T13:20:47.327Z",
+        "is_superuser": false,
+        "username": "cook_Carmen",
+        "first_name": "Carmen",
+        "last_name": "Morales",
+        "email": "carmen_morales@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T13:20:32.870Z",
+        "years_of_experience": 32,
+        "is_active": true,
+        "avatar": "image/upload/v1756128057/zqojflmu8edkgcgdou2m.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cook.cook",
+    "pk": 23,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$8LBGp0qPXazWxbzHPbVK2e$OSIOvHXRB6ew86Iki2BZ0PsOg1cH8JCyXCz47ALFPGg=",
+        "last_login": "2025-08-25T14:43:02.900Z",
+        "is_superuser": false,
+        "username": "cook_Lucia",
+        "first_name": "Lucia",
+        "last_name": "Navarro",
+        "email": "lucia_navarro@email.com",
+        "is_staff": false,
+        "date_joined": "2025-08-25T14:41:39.145Z",
+        "years_of_experience": 7,
+        "is_active": true,
+        "avatar": "image/upload/v1756133063/vgf86dnhclsjzebwjqnw.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 2,
+    "fields": {
+        "name": "Salads"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 3,
+    "fields": {
+        "name": "Soups"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 5,
+    "fields": {
+        "name": "Main Courses"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 6,
+    "fields": {
+        "name": "Side Dishes"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 8,
+    "fields": {
+        "name": "Appetizers / Starters"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 9,
+    "fields": {
+        "name": "Desserts"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 10,
+    "fields": {
+        "name": "Breads & Bakery"
+    }
+},
+{
+    "model": "dish.dishtype",
+    "pk": 11,
+    "fields": {
+        "name": "Snacks / Street Food"
+    }
+},
+{
+    "model": "dish.dish",
+    "pk": 1,
+    "fields": {
+        "name": "Greek Salad",
+        "description": "(feta, olives, cucumber)",
+        "price": "4.45",
+        "photo": "image/upload/v1756199882/uaxcabna8yfky2zpswlb.png",
+        "dish_type": [
+            2
+        ],
+        "cooks": [
+            18,
+            19
+        ],
+        "ingredients": [
+            13,
+            9,
+            12
+        ]
+    }
+},
+{
+    "model": "dish.dish",
+    "pk": 2,
+    "fields": {
+        "name": "Caesar Salad",
+        "description": "(romaine, parmesan, croutons)",
+        "price": "5.87",
+        "photo": "image/upload/v1756133264/ogrqsdgmnxbowdalorke.png",
+        "dish_type": [
+            2,
+            11
+        ],
+        "cooks": [
+            20,
+            22,
+            23
+        ],
+        "ingredients": [
+            27,
+            16,
+            15,
+            14
+        ]
+    }
+},
+{
+    "model": "dish.dish",
+    "pk": 3,
+    "fields": {
+        "name": "Tom Yum",
+        "description": "(Thai spicy-sour soup)",
+        "price": "3.00",
+        "photo": "image/upload/v1756130474/zqdbian4xll39rlpww34.png",
+        "dish_type": [
+            11,
+            3
+        ],
+        "cooks": [
+            21
+        ],
+        "ingredients": [
+            20,
+            21
+        ]
+    }
+},
+{
+    "model": "dish.dish",
+    "pk": 4,
+    "fields": {
+        "name": "Bruschetta",
+        "description": "(toasted bread with tomato topping)",
+        "price": "8.00",
+        "photo": "image/upload/v1756130424/myt9uldzfo2pxk0byrn1.png",
+        "dish_type": [
+            8
+        ],
+        "cooks": [
+            22,
+            19
+        ],
+        "ingredients": [
+            28
+        ]
+    }
+},
+{
+    "model": "dish.dish",
+    "pk": 6,
+    "fields": {
+        "name": "Empanadas",
+        "description": "(stuffed pastry pockets)",
+        "price": "2.11",
+        "photo": null,
+        "dish_type": [
+            8,
+            10
+        ],
+        "cooks": [
+            20,
+            22
+        ],
+        "ingredients": []
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 9,
+    "fields": {
+        "name": "feta"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 11,
+    "fields": {
+        "name": "rice"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 12,
+    "fields": {
+        "name": "olives"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 13,
+    "fields": {
+        "name": "cucumber"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 14,
+    "fields": {
+        "name": "romaine"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 15,
+    "fields": {
+        "name": "parmesan"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 16,
+    "fields": {
+        "name": "croutons"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 17,
+    "fields": {
+        "name": "tomato"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 18,
+    "fields": {
+        "name": "mozzarella"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 19,
+    "fields": {
+        "name": "basil"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 20,
+    "fields": {
+        "name": "Thai spicy"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 21,
+    "fields": {
+        "name": "sour soup"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 22,
+    "fields": {
+        "name": "curry"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 23,
+    "fields": {
+        "name": "egg"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 24,
+    "fields": {
+        "name": "pancetta"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 26,
+    "fields": {
+        "name": "Asparagus"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 27,
+    "fields": {
+        "name": "Lemon"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 28,
+    "fields": {
+        "name": "tomato"
+    }
+},
+{
+    "model": "ingredient.ingredient",
+    "pk": 29,
+    "fields": {
+        "name": "Chocolate"
+    }
+}
+]

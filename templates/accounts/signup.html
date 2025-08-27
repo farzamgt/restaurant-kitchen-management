@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center m-5">
+    <div class="col-md-6 col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Sign Up</h3>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <dev class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-outline-primary w-50 mt-3">Sign Up</button>
+                    </dev>
+                </form>
+                <p class="text-center mt-3">
+                    Already have an account? <a href="{% url 'cook:login' %}">Log In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
