@@ -2,6 +2,17 @@
 
 Django project for managing a restaurant kitchen.
 
+### Link To Application
+
+https://restaurant-kitchen-management.onrender.com/
+
+
+#### User for testing app
+```
+login: head_cook_Giovanni
+password: 112233!asd
+```
+
 ## Overview
 
 RestoManage is a Django-based web application designed to help restaurants efficiently manage dishes, ingredients, cooks, and related data. The system provides an intuitive interface for CRUD operations, search, and pagination, along with a modern, responsive design powered by Bootstrap 5.  
