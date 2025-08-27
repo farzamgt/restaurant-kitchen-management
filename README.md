@@ -64,9 +64,7 @@ RestoManage is a Django-based web application designed to help restaurants effic
 
 1. Clone the repository:
    ```bash
-   git clone <repo_url>
-   cd restaurant_kitchen
-
+   git clone https://github.com/farzamgt/restaurant-kitchen-management.git
 2. Create and activate a virtual environment:
    ```bash
     python -m venv .venv
